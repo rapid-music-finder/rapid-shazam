@@ -2,9 +2,6 @@
     
 <template>
   <v-app id="inspire" v-if="searched">
-    <v-toolbar color="indigo" dark fixed app>
-      <v-toolbar-title>RAPID API</v-toolbar-title>
-    </v-toolbar>
     <v-content>
       <v-container fluid fill-height>
         <v-layout mt-5 justify-center>
@@ -22,14 +19,11 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer color="indigo" app>
-      <span class="white--text">&copy; 2017</span>
-    </v-footer>
   </v-app>
 </template>
 
 <script>
-import Vuex, { mapState } from "vuex";
+import { mapState } from "vuex";
 import AlbumDetails from "./AlbumDetails";
 import YoutubeVideo from "./YoutubeVideo.vue";
 import Lyrics from "./Lyrics.vue";

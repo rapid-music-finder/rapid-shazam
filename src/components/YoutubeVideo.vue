@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Vuex, { mapState } from "vuex";
+import { mapState } from "vuex";
 export default {
   data: () => ({
     drawer: null
