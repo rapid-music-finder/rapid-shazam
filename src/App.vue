@@ -6,38 +6,37 @@
         <span class="font-weight-light">Shazam</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/rapid-music-finder/rapid-shazam"
-        target="_blank"
-      >
-        <span class="mr-2">Github</span>
+      <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
+        <span class="mr-2">Latest Release</span>
       </v-btn>
     </v-toolbar>
 
     <v-content>
       <Search/>
+      <Results/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Search from './components/Search'
+import Search from "./components/Search";
+import Results from "./components/Results";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Search
+    Search,
+    Results
   },
-  data () {
+  data() {
     return {
       //
-    }
-  },
-}
+    };
+  }
+};
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
