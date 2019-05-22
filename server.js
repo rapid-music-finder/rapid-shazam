@@ -42,7 +42,7 @@ app.get('/api/songs/:title', async (req, res, next) => {
     .send("id=" + targetSongId);
 
 
-  const musicInfo = {...songInfo.data.result[0], lyric: lyric.body.results};
+  const musicInfo = [{...songInfo.data.result[0], lyric: lyric.body.results}];
 
   res.send(musicInfo);
 
