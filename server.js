@@ -3,6 +3,7 @@ const serveStatic = require("serve-static")
 const path = require('path');
 const app = express();
 const axios = require('axios');
+const unirest = require('unirest');
 require('dotenv').config();
 
 const MUSIC_GRAPH_KEY = process.env.MUSIC_GRAPH_KEY;
@@ -18,29 +19,32 @@ app.get('/api/songs/:title', async (req, res, next) => {
       "X-RapidAPI-Key": X_RAPIDAPI_KEY
     };
 
-  const lyricsDatavbaseHeader = {
-    "X-RapidAPI-Host": "ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com",
-    "X-RapidAPI-Key": X_RAPIDAPI_KEY,
-    "Content-Type": "application/x-www-form-urlencode"
-  }
 
-    // X-RapidAPI-Host: ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com
-
-    // X-RapidAPI-Key: 173c4655f1mshb630819376b0c16p1f3c16jsnd176b234b6eb
-    // unirest.post(“https://ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com/music/gettopchart“)
-    //done  .header(“X-RapidAPI-Host”, “ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com”)
-    //done  .header(“X-RapidAPI-Key”, “173c4655f1mshb630819376b0c16p1f3c16jsnd176b234b6eb”)
-    //done  .header(“Content-Type”, “application/x-www-form-urlencoded”)
-    // .end(function (result) {
-    //  console.log(result.status, result.headers, result.body);
-    // });
   // TODO: Figure out how to get more than one artist if they share song title 
   const songInfo = await axios.post("https://macgyverapi-music-graph-v1.p.rapidapi.com/", musicGraphdata, {headers: musicGraphHeaders})
   
+
   // TODO: Change this to promis all after we know how to get more than one song frmo music graph
-  // const lyrics = await axios.get(https://ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com/music/gettopchart)
+  const artist = songInfo.data.result[0].artist;
+  const songName = songInfo.data.result[0].songName;
+  const trackList = await unirest.post("https://ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com/music/searchtrack")
+  .header("X-RapidAPI-Host", "ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com")
+  .header("X-RapidAPI-Key", X_RAPIDAPI_KEY)
+  .header("Content-Type", "application/x-www-form-urlencoded")
+  .send("q="+artist + " " + songName);
   
-  res.send(songInfo.data.result);
+  const targetSongId = trackList.body.results.itemlist[0].songid;
+  
+  const lyric = await unirest.post("https://ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com/music/getlyric")
+    .header("X-RapidAPI-Host", "ptwebsolution-song-and-lyric-database-in-the-world-v1.p.rapidapi.com")
+    .header("X-RapidAPI-Key", X_RAPIDAPI_KEY)
+    .header("Content-Type", "application/x-www-form-urlencoded")
+    .send("id=" + targetSongId);
+
+
+  const musicInfo = [{...songInfo.data.result[0], lyric: lyric.body.results}];
+
+  res.send(musicInfo);
 
 
     // .catch(() => {
