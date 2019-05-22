@@ -1,11 +1,11 @@
 <template>
   <v-card>
     <v-layout row>
-      <v-flex xs6>
+      <v-flex xs6 pt-0 pb-0>
         <v-img :src="songDetails.thumbnails" height="315px" contain/>
       </v-flex>
       <v-flex xs6>
-        <v-card-title primary-title justify-end>
+        <v-card-title primary-title text-xs-center>
           <div>
             <div class="headline">
               <span>Title:</span>

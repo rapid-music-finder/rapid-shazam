@@ -1,7 +1,7 @@
 
     
 <template>
-  <v-app id="inspire">
+  <v-app id="inspire" v-if="searched">
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-title>RAPID API</v-toolbar-title>
     </v-toolbar>
@@ -43,7 +43,7 @@ export default {
     lyrics: Lyrics
   },
   name: "Results",
-  computed: { ...mapState(["songDetails"]) },
+  computed: { ...mapState(["songDetails", "searched"]) },
   props: {
     source: String
   }

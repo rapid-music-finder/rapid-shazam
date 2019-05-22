@@ -6,13 +6,13 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     songDetails: {
-      songName: "Blank Space",
-      albumTitle: "1989",
-      thumbnails: "https://img.youtube.com/vi/e-ORhEE9VVg/hqdefault.jpg",
-      genre: ["Electropop", "Pop"],
-      releaseDate: "2015",
-      artist: "Taylor Swift",
-      ytVideo: "https://www.youtube.com/embed/e-ORhEE9VVg"
+      songName: "",
+      albumTitle: "",
+      thumbnails: "",
+      genre: "",
+      releaseDate: "",
+      artist: "",
+      ytVideo: ""
     },
     lyrics: [
       "Spent 24 hours I need more hours with you",
@@ -30,11 +30,22 @@ const store = new Vuex.Store({
       "Spent 24 hours I need more hours with you",
       "You spent the weekend getting even ooh"
     ],
-    songList: []
+    searched: false
   },
   mutations: {
     setSongList(vuexContext, payload) {
-      vuexContext.songList = payload;
+      vuexContext.songDetails.albumTitle = payload[0].albumTitle;
+      vuexContext.songDetails.artist = payload[0].artist;
+      vuexContext.songDetails.songName = payload[0].songName;
+      vuexContext.songDetails.genre = payload[0].genre.join(" ");
+      vuexContext.songDetails.thumbnails =
+        payload[0].thumbnails["high-quality"];
+      vuexContext.songDetails.releaseDate = payload[0].releaseDate;
+      vuexContext.songDetails.artist = payload[0].artist;
+      vuexContext.songDetails.ytVideo = `https://www.youtube.com/embed/${
+        payload[0].ytVideo
+      }`;
+      vuexContext.searched = true;
     }
   },
   actions: {},
