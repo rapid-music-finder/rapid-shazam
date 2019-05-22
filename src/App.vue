@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-toolbar app class="primary">
-      <v-toolbar-title class="navbar headline text-uppercase" @click="toggleView">
+      <v-toolbar-title class="navbar headline text-uppercase" v-on:click="toggleView">
         <span>Rapid</span>
         <span class="font-weight-light">Shazam</span>
       </v-toolbar-title>
@@ -31,6 +31,11 @@ export default {
   components: {
     Search,
     Results
+  },
+  methods: {
+    toggleView() {
+      this.$store.commit("backToSearch");
+    }
   },
   data() {
     return {
