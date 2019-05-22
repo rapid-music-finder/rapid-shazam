@@ -46,15 +46,12 @@
     }),
     methods: {
     fetchSongList(){
-      const data = {key:"free",id:"9m9c8U4f",data:{search:this.searchTerm}};
-      const headers = { 
-          "X-RapidAPI-Host": "macgyverapi-music-graph-v1.p.rapidapi.com",
-          "Content-Type": "application/json",
-          "X-RapidAPI-Key": "173c4655f1mshb630819376b0c16p1f3c16jsnd176b234b6eb"
-        };
-      axios.post("https://macgyverapi-music-graph-v1.p.rapidapi.com/", data, {headers: headers})
+      axios.get(`/api/songs/${this.searchTerm}`)
         .then(result => {
-        this.$store.commit("setSongList", result.data.result);
+          this.$store.commit("setSongList", result.data)  ;
+        })
+        .catch(err => {
+          this.$store.commit("setSongList", err.data)
         })
       }
     },
