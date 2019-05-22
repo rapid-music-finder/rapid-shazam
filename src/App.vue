@@ -6,8 +6,8 @@
         <span class="font-weight-light">Shazam</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="mr-2">Latest Release</span>
+      <v-btn flat href="https://github.com/rapid-music-finder/rapid-shazam" target="_blank">
+        <span class="mr-2">Github</span>
       </v-btn>
     </v-toolbar>
 
@@ -15,6 +15,10 @@
       <Search/>
       <Results/>
     </v-content>
+
+    <v-footer color="white" app>
+      <span class="black--text">&copy; 2019</span>
+    </v-footer>
   </v-app>
 </template>
 
