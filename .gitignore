@@ -1,3 +1,7 @@
+# Local Files
+.env
+dist
+
 # Logs
 logs
 *.log
