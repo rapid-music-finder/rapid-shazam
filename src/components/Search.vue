@@ -15,18 +15,23 @@
         xs12
       >
         <v-form>
-            <v-container>
-              <v-layout row wrap justify-center>
-                <v-flex xs12 sm6 md30>
-                  <v-text-field
-                    label="Song Title"
-                    append-icon="search"
-                    solo
-                  ></v-text-field>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-form>
+          <v-container>
+            <v-layout row wrap justify-center>
+              <v-flex xs12 sm6 md30>
+                <v-text-field
+                  label="Song Title"
+                  append-icon="search"
+                  solo
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-form>
+
+        <v-layout justify-center>
+          Just insert songtitle and press enter to get song info!
+        </v-layout>
+
       </v-flex>
     </v-layout>
   </v-container>
