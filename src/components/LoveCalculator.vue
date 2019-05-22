@@ -6,7 +6,7 @@
         <div class="text-xs-center">
           <v-progress-circular :size="100" :width="15" :value="value" color="pink">{{ value }}</v-progress-circular>
         </div>
-        <v-card-title justify-center align-center>{{message}}</v-card-title>
+        <v-card-title class="result-message" justify-center align-center>{{message}}</v-card-title>
       </v-card>
     </v-flex>
   </v-layout>
@@ -27,4 +27,7 @@ export default {
 </script>
 
 <style>
+.result-message {
+  font-size: 16px;
+}
 </style>

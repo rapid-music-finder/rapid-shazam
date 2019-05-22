@@ -53,7 +53,7 @@ span {
   font-weight: bold;
 }
 
-.v-card-title {
+div.v-card__title {
   justify-content: center !important;
   align-items: center !important;
 }

@@ -62,5 +62,9 @@ export default {
 .v-content#main {
   padding: 0;
 }
+
+.headline {
+  cursor: pointer;
+}
 </style>
 
