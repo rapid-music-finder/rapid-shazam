@@ -645,6 +645,7 @@ const store = new Vuex.Store({
       "Spent 24 hours I need more hours with you",
       "You spent the weekend getting even ooh"
     ],
+    events: [],
     searched: false
   },
   mutations: {

@@ -8,9 +8,9 @@
         <v-flex xs7>
           <v-card-title primary-title>
             <div>{{concert.name}}</div>
-            <div>{{concert.dates.start.localDate}} {{concert.dates.start.localTime}}</div>
+            <div>{{concert.dates.start.dateTime}}</div>
             <v-card-actions>
-              <v-btn flat dark>Check details here</v-btn>
+              <v-btn :href="concert.url" target="_blank" flat dark>Check details here</v-btn>
             </v-card-actions>
           </v-card-title>
         </v-flex>
