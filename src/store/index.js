@@ -33,23 +33,24 @@ const store = new Vuex.Store({
     searched: false
   },
   mutations: {
-    setSongList(vuexContext, payload) {
-      vuexContext.songDetails.albumTitle = payload[0].albumTitle;
-      vuexContext.songDetails.artist = payload[0].artist;
-      vuexContext.songDetails.songName = payload[0].songName;
-      vuexContext.songDetails.genre = payload[0].genre.join(" ");
-      vuexContext.songDetails.thumbnails =
+    setSongList(state, payload) {
+      state.songDetails.albumTitle = payload[0].albumTitle;
+      state.songDetails.artist = payload[0].artist;
+      state.songDetails.songName = payload[0].songName;
+      state.songDetails.genre = payload[0].genre.join(" ");
+      state.songDetails.thumbnails =
         payload[0].thumbnails["high-quality"];
-      vuexContext.songDetails.releaseDate = payload[0].releaseDate;
-      vuexContext.songDetails.artist = payload[0].artist;
-      vuexContext.songDetails.ytVideo = `https://www.youtube.com/embed/${
+      state.songDetails.releaseDate = payload[0].releaseDate;
+      state.songDetails.artist = payload[0].artist;
+      state.songDetails.ytVideo = `https://www.youtube.com/embed/${
         payload[0].ytVideo
       }`;
-      vuexContext.songDetails.lyrics = payload[0].lyrics;
-      vuexContext.searched = true;
+      state.songDetails.lyrics = payload[0].lyrics;
+      state.events = payload[0].events
+      state.searched = true;
     },
-    backToSearch(vuexContext) {
-      vuexContext.searched = !vuexContext.searched
+    backToSearch(state) {
+      state.searched = !state.searched
     }
   },
   getters: {
