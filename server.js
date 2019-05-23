@@ -53,6 +53,7 @@ app.get('/api/songs/:title', async (req, res, next) => {
       lyrics: lyric.body.results,
       events: ticketMasterData.body._embedded.events
     }
+    
   ];
 
   res.send(musicInfo);
