@@ -15,7 +15,8 @@ const store = new Vuex.Store({
       ytVideo: ""
     },
     searched: false,
-    loveCalculatorResult: {}
+    loveCalculatorResult: {},
+    loader: false,
   },
   mutations: {
     setSongList(state, payload) {
@@ -53,7 +54,11 @@ const store = new Vuex.Store({
 
     loveCalculator(state, data) {
       state.loveCalculatorResult = data;
-    }
+    },
+
+    loader(state, payload) {
+      state.loader = payload
+    },
   }
 });
 

@@ -1,5 +1,3 @@
-
-    
 <template>
   <v-container fluid fill-height id="inspire" v-if="searched">
     <v-layout>

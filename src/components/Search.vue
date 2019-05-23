@@ -25,17 +25,33 @@
 <script>
 import axios from "axios";
 import { mapState } from "vuex";
+import Loader from "./partial/Loader";
+
 export default {
+  name: "Search",
   data: () => ({
-    searchTerm: ""
+    searchTerm: "",
+    Loader
   }),
   computed: { ...mapState(["searched"]) },
+  // created() {
+  //   axios.interceptors.request.use(function (config) {
+  //     // Do something before request is sent
+  //     //this.$store.commit("loader", true)
+  //     return config;
+  //   }, function (error) {
+  //     // Do something with request error
+  //     return Promise.reject(error);
+  //   });
+  // },
   methods: {
     fetchSongList() {
+      this.$store.commit("loader", true)
       axios
         .get(`/api/songs/${this.searchTerm}`)
         .then(result => {
           this.$store.commit("setSongList", result.data);
+          this.$store.commit("loader", false);
         })
         .catch(err => {
           this.$store.commit("setSongList", err.data);
