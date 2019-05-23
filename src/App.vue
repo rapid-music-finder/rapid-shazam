@@ -2,8 +2,8 @@
   <v-app>
     <v-toolbar app class="primary">
       <v-toolbar-title class="navbar headline text-uppercase" v-on:click="toggleView">
-        <span>Rapid</span>
-        <span class="font-weight-light">Shazam</span>
+        <span>S</span>
+        <span class="font-weight-light">4</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/rapid-music-finder/rapid-shazam" target="_blank">
@@ -65,6 +65,7 @@ export default {
 
 .headline {
   cursor: pointer;
+  font-size: 20px;
 }
 </style>
 

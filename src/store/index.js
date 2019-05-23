@@ -14,7 +14,8 @@ const store = new Vuex.Store({
       artist: "",
       ytVideo: ""
     },
-    searched: false
+    searched: false,
+    loveCalculatorResult: {}
   },
   mutations: {
     setSongList(state, payload) {
@@ -48,11 +49,10 @@ const store = new Vuex.Store({
 
     backToSearch(state) {
       state.searched = !state.searched;
-    }
-  },
-  getters: {
-    songList(state) {
-      return state.songList;
+    },
+
+    loveCalculator(state, data) {
+      state.loveCalculatorResult = data;
     }
   }
 });
