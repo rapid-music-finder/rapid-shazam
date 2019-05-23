@@ -45,10 +45,7 @@ const store = new Vuex.Store({
 
       state.songDetails.lyrics = lyricText;
       state.searched = true;
-      if (payload[0].events) {
-        state.events = payload[0].events;
-        state.concertDetails = true;
-      }
+      state.events = payload[0].events;
     },
 
     backToSearch(state) {
