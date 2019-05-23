@@ -14,26 +14,11 @@ const store = new Vuex.Store({
       artist: "",
       ytVideo: ""
     },
-    lyrics: [
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh"
-    ],
     searched: false
   },
   mutations: {
     setSongList(vuexContext, payload) {
+      const lyricsString = [];
       vuexContext.songDetails.albumTitle = payload[0].albumTitle;
       vuexContext.songDetails.artist = payload[0].artist;
       vuexContext.songDetails.songName = payload[0].songName;
@@ -45,11 +30,24 @@ const store = new Vuex.Store({
       vuexContext.songDetails.ytVideo = `https://www.youtube.com/embed/${
         payload[0].ytVideo
       }`;
-      vuexContext.songDetails.lyrics = payload[0].lyrics;
+
+      let title = [];
+      let lyricText = [];
+      payload[0].lyrics.forEach(item => {
+        if (item.timing === "0:00" || item.timing === "") {
+          title.push(item.text);
+        } else {
+          lyricText.push(item.text);
+        }
+      });
+
+      lyricText.unshift(title[title.length - 1]);
+
+      vuexContext.songDetails.lyrics = lyricText;
       vuexContext.searched = true;
     },
     backToSearch(vuexContext) {
-      vuexContext.searched = !vuexContext.searched
+      vuexContext.searched = !vuexContext.searched;
     }
   },
   getters: {
