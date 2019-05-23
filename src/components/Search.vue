@@ -9,7 +9,7 @@
         <v-form @submit.prevent="fetchSongList">
           <v-container>
             <v-layout row wrap justify-center>
-              <v-flex xs12 sm6 md3>
+              <v-flex xs12 sm6>
                 <v-text-field label="Song Title" append-icon="search" solo v-model="searchTerm"></v-text-field>
               </v-flex>
             </v-layout>

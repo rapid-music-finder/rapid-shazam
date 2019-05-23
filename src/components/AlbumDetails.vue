@@ -2,7 +2,7 @@
   <v-layout>
     <v-flex>
       <v-card>
-        <v-img :src="songDetails.thumbnails" height="215px" contain/>
+        <v-img :src="songDetails.thumbnails" height="180px" contain/>
         <v-card-title justify-center align-center>
           <div>
             <span class="headline">Title:</span>

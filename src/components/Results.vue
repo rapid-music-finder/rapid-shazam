@@ -8,6 +8,7 @@
           <v-flex xs12 sm4 mr-4 justify-center align-center>
             <albumdetails/>
             <lovecalc/>
+            <concerts/>
           </v-flex>
           <v-flex xs12 sm8 order-lg2>
             <youtubeVideo/>
@@ -25,6 +26,8 @@ import AlbumDetails from "./AlbumDetails";
 import YoutubeVideo from "./YoutubeVideo.vue";
 import Lyrics from "./Lyrics.vue";
 import LoveCalculator from "./LoveCalculator.vue";
+import ConcertsInfo from "./ConcertsInfo.vue";
+
 export default {
   data: () => ({
     drawer: null
@@ -33,7 +36,8 @@ export default {
     albumdetails: AlbumDetails,
     youtubeVideo: YoutubeVideo,
     lyrics: Lyrics,
-    lovecalc: LoveCalculator
+    lovecalc: LoveCalculator,
+    concerts: ConcertsInfo
   },
   name: "Results",
   computed: { ...mapState(["songDetails", "searched"]) },
