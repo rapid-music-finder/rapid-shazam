@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-toolbar app class="primary">
-      <v-toolbar-title class="navbar headline text-uppercase" v-on:click="toggleView">
+      <v-toolbar-title class="navbar display-1 text-uppercase" v-on:click="toggleView">
         <span>S</span>
         <span class="font-weight-light">4</span>
       </v-toolbar-title>
@@ -11,7 +11,7 @@
       </v-btn>
     </v-toolbar>
 
-    <v-content id="main">
+    <v-content id="main" mt-0>
       <Search/>
       <Results/>
     </v-content>
@@ -63,9 +63,11 @@ export default {
   padding: 0;
 }
 
-.headline {
+.display-1 {
   cursor: pointer;
-  font-size: 20px;
+}
+#main {
+  padding-top: 0 !important;
 }
 </style>
 

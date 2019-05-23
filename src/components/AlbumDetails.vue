@@ -2,17 +2,20 @@
   <v-layout>
     <v-flex>
       <v-card>
-        <v-img :src="songDetails.thumbnails" height="180px" contain/>
+        <v-img pt-3 :src="songDetails.thumbnails" height="150px" contain/>
         <v-card-title justify-center align-center>
           <div>
-            <span class="headline">Title:</span>
-            <span class="headline">{{songDetails.songName}}</span>
+            <span class="songTitle">Title:</span>
+            <span class="songTitle font-weight-bold">{{songDetails.songName}}</span>
             <br>
-            <span class="text">Album:{{songDetails.albumTitle}}</span>
+            <span class="albumDetails">Album:</span>
+            <span class="albumDetails font-weight-bold">{{songDetails.albumTitle}}</span>
             <br>
-            <span class="text">Release Date:{{songDetails.releaseDate}}</span>
+            <span class="albumDetails">Release Date:</span>
+            <span class="albumDetails font-weight-bold">{{songDetails.releaseDate}}</span>
             <br>
-            <span class="text">Artist:{{songDetails.artist}}</span>
+            <span class="albumDetails">Artist:</span>
+            <span class="albumDetails font-weight-bold">{{songDetails.artist}}</span>
             <br>
           </div>
         </v-card-title>
@@ -40,21 +43,20 @@ span {
   font-family: "Roboto", sans-serif !important;
 }
 
-.text {
-  font-size: 18px;
-  font-weight: 300;
+.albumDetails {
+  font-size: 17px;
 }
 
-.headline {
-  font-size: 25px;
-}
-
-span {
-  font-weight: bold;
+.songTitle {
+  font-size: 20px;
 }
 
 div.v-card__title {
   justify-content: center !important;
   align-items: center !important;
+}
+
+.v-image__image.v-image__image--contain {
+  margin-top: 15px;
 }
 </style>
