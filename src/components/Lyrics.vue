@@ -7,14 +7,12 @@
             <h1>{{songDetails.songName}}</h1>
           </v-layout>
           <v-container id="scroll-target" style="max-height: 400px" class="scroll-y">
-            <v-layout
-              v-scroll:#scroll-target="onScroll"
-              column
-              align-center
-              justify-center
-              style="height: 1000px"
-            >
-              <div>{{lyric}}</div>
+            <v-layout column style="height: 1000px">
+              <div
+                class="imageCell"
+                v-for="(lyric,index) in songDetails.lyrics"
+                :key="index"
+              >{{lyric}}</div>
             </v-layout>
           </v-container>
         </div>
@@ -30,7 +28,7 @@ export default {
     drawer: null
   }),
   name: "Lyrics",
-  computed: { ...mapState(["lyrics", "songDetails"]) },
+  computed: { ...mapState(["songDetails"]) },
   props: {
     source: String
   }

@@ -1,11 +1,15 @@
 <template>
-  <v-layout mt-3>
+  <v-layout mt-3 class="concert-card">
     <v-flex>
       <v-card>
         <v-card-title class="result-message" justify-center align-center>Upcomming Concerts</v-card-title>
-        <div v-for="(concert, index) of concertDetails.events" :key="index">
-          <concert :concert="concert"/>
-        </div>
+        <v-container id="scroll-target" style="max-height: 170px" class="scroll-y">
+          <!-- <v-layout column> -->
+          <div v-for="(concert, index) of events" :key="index">
+            <concert :concert="concert"/>
+          </div>
+          <!-- </v-layout> -->
+        </v-container>
       </v-card>
     </v-flex>
   </v-layout>
@@ -23,6 +27,6 @@ export default {
     concert: Concert
   },
   name: "ConcertsInfo",
-  computed: { ...mapState(["concertDetails"]) }
+  computed: { ...mapState(["events"]) }
 };
 </script>

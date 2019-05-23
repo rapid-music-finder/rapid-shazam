@@ -27,7 +27,7 @@ export default {
     drawer: null
   }),
   name: "Concert",
-  computed: { ...mapState(["concertDetails"]) },
+  computed: { ...mapState(["events"]) },
   props: ["concert", "key"]
 };
 </script>
