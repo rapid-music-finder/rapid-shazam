@@ -45,6 +45,7 @@ const store = new Vuex.Store({
       vuexContext.songDetails.ytVideo = `https://www.youtube.com/embed/${
         payload[0].ytVideo
       }`;
+      vuexContext.songDetails.lyrics = payload[0].lyrics;
       vuexContext.searched = true;
     },
     backToSearch(vuexContext) {
