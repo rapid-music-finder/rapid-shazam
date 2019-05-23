@@ -16,7 +16,8 @@ const store = new Vuex.Store({
     },
     searched: false,
     loveCalculatorResult: {},
-    concertDetails: false
+    loader: false,
+    concertDetails: false,
   },
   mutations: {
     setSongList(state, payload) {
@@ -55,7 +56,11 @@ const store = new Vuex.Store({
 
     loveCalculator(state, data) {
       state.loveCalculatorResult = data;
-    }
+    },
+
+    loader(state, payload) {
+      state.loader = payload
+    },
   }
 });
 

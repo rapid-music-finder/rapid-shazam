@@ -13,6 +13,7 @@
 
     <v-content id="main" mt-0>
       <Search/>
+      <TempLoader/>
       <Results/>
     </v-content>
 
@@ -25,12 +26,14 @@
 <script>
 import Search from "./components/Search";
 import Results from "./components/Results";
+import TempLoader from "./components/TempLoader"
 
 export default {
   name: "App",
   components: {
     Search,
-    Results
+    Results,
+    TempLoader
   },
   methods: {
     toggleView() {
