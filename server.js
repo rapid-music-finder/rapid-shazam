@@ -63,6 +63,14 @@ app.get('/api/songs/:title', async (req, res, next) => {
     // })
 })
 
+app.get('/api/love',async function(req, res) {
+  let { fname, sname } = req.query;
+  let loveScore = await unirest.get(`https://love-calculator.p.rapidapi.com/getPercentage?fname=${fname}&sname=${sname}`)
+        .header("X-RapidAPI-Host", "love-calculator.p.rapidapi.com")
+        .header("X-RapidAPI-Key", X_RAPIDAPI_KEY);
+  res.send(loveScore.raw_body);
+});
+
 app.use(serveStatic(path.join(__dirname, 'dist')));
 const port = process.env.PORT || 8000;
 app.listen(port);
