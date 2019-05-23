@@ -1,5 +1,5 @@
 <template>
-  <v-layout mt-3 class="concert-card">
+  <v-layout v-if="concertDetails" mt-3 class="concert-card">
     <v-flex>
       <v-card>
         <v-card-title class="result-message" justify-center align-center>Upcomming Concerts</v-card-title>
@@ -27,6 +27,6 @@ export default {
     concert: Concert
   },
   name: "ConcertsInfo",
-  computed: { ...mapState(["events"]) }
+  computed: { ...mapState(["events", "concertDetails"]) }
 };
 </script>
