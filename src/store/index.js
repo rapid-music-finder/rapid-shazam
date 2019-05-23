@@ -14,22 +14,6 @@ const store = new Vuex.Store({
       artist: "",
       ytVideo: ""
     },
-    lyrics: [
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh",
-      "Spent 24 hours I need more hours with you",
-      "You spent the weekend getting even ooh"
-    ],
     searched: false
   },
   mutations: {
@@ -38,19 +22,32 @@ const store = new Vuex.Store({
       state.songDetails.artist = payload[0].artist;
       state.songDetails.songName = payload[0].songName;
       state.songDetails.genre = payload[0].genre.join(" ");
-      state.songDetails.thumbnails =
-        payload[0].thumbnails["high-quality"];
+      state.songDetails.thumbnails = payload[0].thumbnails["high-quality"];
       state.songDetails.releaseDate = payload[0].releaseDate;
       state.songDetails.artist = payload[0].artist;
       state.songDetails.ytVideo = `https://www.youtube.com/embed/${
         payload[0].ytVideo
       }`;
-      state.songDetails.lyrics = payload[0].lyrics;
-      state.events = payload[0].events
+
+      let title = [];
+      let lyricText = [];
+      payload[0].lyrics.forEach(item => {
+        if (item.timing === "0:00" || item.timing === "") {
+          title.push(item.text);
+        } else {
+          lyricText.push(item.text);
+        }
+      });
+
+      lyricText.unshift(title[title.length - 1]);
+
+      state.songDetails.lyrics = lyricText;
       state.searched = true;
+      state.events = payload[0].events;
     },
+
     backToSearch(state) {
-      state.searched = !state.searched
+      state.searched = !state.searched;
     }
   },
   getters: {
