@@ -9,6 +9,7 @@ require('dotenv').config();
 const MUSIC_GRAPH_KEY = process.env.MUSIC_GRAPH_KEY;
 const MUSIC_GRAPH_ID = process.env.MUSIC_GRAPH_ID;
 const X_RAPIDAPI_KEY = process.env.X_RAPIDAPI_KEY;
+const TICKET_MASTER_API = process.env.TICKET_MASTER_API;
 
 app.get('/api/songs/:title', async (req, res, next) => {
   const { title } = req.params
@@ -41,8 +42,18 @@ app.get('/api/songs/:title', async (req, res, next) => {
     .header("Content-Type", "application/x-www-form-urlencoded")
     .send("id=" + targetSongId);
 
+  const ticketMasterSearchTerm = artist;
+  const ticketMasterData = await unirest.get(`https://chrysalis.p.rapidapi.com/discovery/v2/events.json?keyword=${ticketMasterSearchTerm}&apikey=${TICKET_MASTER_API}`)
+    .header("X-RapidAPI-Host", "chrysalis.p.rapidapi.com")
+    .header("X-RapidAPI-Key", "41b9ff1090mshafbe28520892ff6p102ca7jsn01cb4317a885")
 
-  const musicInfo = [{...songInfo.data.result[0], lyric: lyric.body.results}];
+  const musicInfo = [
+    {
+      ...songInfo.data.result[0], 
+      lyrics: lyric.body.results,
+      events: ticketMasterData.body._embedded.events
+    }
+  ];
 
   res.send(musicInfo);
 
