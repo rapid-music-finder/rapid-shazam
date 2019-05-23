@@ -1,33 +1,24 @@
 <template>
-  <v-card>
-    <v-layout row>
-      <v-flex xs6 pt-0 pb-0>
-        <v-img :src="songDetails.thumbnails" height="315px" contain/>
-      </v-flex>
-      <v-flex xs6>
-        <v-card-title primary-title text-xs-center>
+  <v-layout>
+    <v-flex>
+      <v-card>
+        <v-img :src="songDetails.thumbnails" height="215px" contain/>
+        <v-card-title justify-center align-center>
           <div>
-            <div class="headline">
-              <span>Title:</span>
-              {{songDetails.songName}}
-            </div>
-            <div class="text">
-              <span>Album:</span>
-              {{songDetails.albumTitle}}
-            </div>
-            <div class="text">
-              <span>Release Date:</span>
-              {{songDetails.releaseDate}}
-            </div>
-            <div class="text">
-              <span>Artist:</span>
-              {{songDetails.artist}}
-            </div>
+            <span class="headline">Title:</span>
+            <span class="headline">{{songDetails.songName}}</span>
+            <br>
+            <span class="text">Album:{{songDetails.albumTitle}}</span>
+            <br>
+            <span class="text">Release Date:{{songDetails.releaseDate}}</span>
+            <br>
+            <span class="text">Artist:{{songDetails.artist}}</span>
+            <br>
           </div>
         </v-card-title>
-      </v-flex>
-    </v-layout>
-  </v-card>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -45,15 +36,25 @@ export default {
 </script>
 
 <style>
+span {
+  font-family: "Roboto", sans-serif !important;
+}
+
 .text {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 300;
 }
 
 .headline {
-  font-size: 40px;
+  font-size: 25px;
 }
 
 span {
   font-weight: bold;
+}
+
+div.v-card__title {
+  justify-content: center !important;
+  align-items: center !important;
 }
 </style>

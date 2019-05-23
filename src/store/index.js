@@ -46,9 +46,11 @@ const store = new Vuex.Store({
         payload[0].ytVideo
       }`;
       vuexContext.searched = true;
+    },
+    backToSearch(vuexContext) {
+      vuexContext.searched = !vuexContext.searched
     }
   },
-  actions: {},
   getters: {
     songList(state) {
       return state.songList;

@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-layout row>
-      <v-flex xs12 text-xs-center>
+      <v-flex xs12 text-xs-center mt-2 mb-2>
         <iframe width="640" height="360" :src="songDetails.ytVideo"></iframe>
       </v-flex>
     </v-layout>

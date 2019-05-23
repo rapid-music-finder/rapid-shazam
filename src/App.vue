@@ -1,17 +1,17 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
+    <v-toolbar app class="primary">
+      <v-toolbar-title class="navbar headline text-uppercase" v-on:click="toggleView">
         <span>Rapid</span>
         <span class="font-weight-light">Shazam</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat href="https://github.com/rapid-music-finder/rapid-shazam" target="_blank">
-        <span class="mr-2">Github</span>
+        <span class="navbar mr-2">Github</span>
       </v-btn>
     </v-toolbar>
 
-    <v-content>
+    <v-content id="main">
       <Search/>
       <Results/>
     </v-content>
@@ -32,6 +32,11 @@ export default {
     Search,
     Results
   },
+  methods: {
+    toggleView() {
+      this.$store.commit("backToSearch");
+    }
+  },
   data() {
     return {
       //
@@ -48,6 +53,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.navbar {
+  color: white;
+}
+
+.v-content#main {
+  padding: 0;
+}
+
+.headline {
+  cursor: pointer;
 }
 </style>
 
